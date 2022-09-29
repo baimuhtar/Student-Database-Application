@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Scanner;
 
 public class Student {
@@ -5,7 +6,7 @@ public class Student {
     private String lastName;
     private int gradeYear;
     private String studentID;
-    private String courses;
+    private String courses = null;
     private int tuitionBalance;
     private static int costOfCourse = 600;
     private static int id = 1000;
@@ -29,18 +30,35 @@ public class Student {
 
     }
 
+    // Generate an ID
     public void setStudentID() {
         id++;
         this.studentID = gradeYear + "" + id;
     }
 
-    // Generate an ID
-
     // Enroll in course
+    public void enroll() {
+        // Get inside a loop, user hits 0
+        do {
+            System.out.print("Enter course to enroll (Q to quit): ");
+            Scanner in = new Scanner(System.in);
+            String course = in.nextLine();
+            if (!course.equals("Q")) {
+                courses = courses + "\n" + course;
+                tuitionBalance = tuitionBalance + costOfCourse;
+            } else {
 
-    // View balance
+                break;
+            }
+        } while (1 != 0);
 
-    // Pay Tuition
+        System.out.println("ENROLLED IN: "+courses);
+        System.out.println("TUITION BALANCE: "+tuitionBalance);
+}
 
-    // Show status
+// View balance
+
+// Pay Tuition
+
+// Show status
 }
